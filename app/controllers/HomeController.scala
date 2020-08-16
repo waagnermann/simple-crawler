@@ -26,8 +26,14 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     Ok(views.html.user(userForm))
   }
 
-  def userPost() = Action {
-    Ok("Hello")
+  def userPost() = Action(parse.form(userForm)) { implicit request =>
+    val userData = request.body
+//    Redirect(s"/info/${userData.name}/${userData.age}")
+    Redirect(routes.HomeController.info(userData.name, userData.age))
+  }
+
+  def info(name: String, age: Int) = Action { implicit request =>
+    Ok(views.html.info(name)(age))
   }
 
 }
