@@ -1,5 +1,31 @@
-@(name: String)(age: Int)
+@(name: String)(age: Int)(map: Map[String, String])
 
 @main("Info") {
-    <h1>Person @name is @age years old </h1>
+    <!DOCTYPE HTML>
+    <html>
+        <head>
+            <meta charset="utf-8">
+            <style>
+                    table.center {
+                        margin-left:auto;
+                        margin-right:auto;
+                    }
+            </style>
+        </head>
+        <body>
+                <table class="center" border="1">
+                <caption>URL - Title accordance table</caption>
+                <tr>
+                    <th>URL</th>
+                    <th>Title</th>
+                </tr>
+                    @for((url, title) <- map) {
+                        <tr><td>@url</td><td>@title</td>
+                    }
+                <tr><td>34,5</td><td>3,5</td>
+                <tr><td>35,5</td><td>4</td>
+                <tr><td>36</td><td>4,5</td>
+            </table>
+        </body>
+    </html>
 }

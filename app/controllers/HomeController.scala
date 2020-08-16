@@ -21,6 +21,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
       "age"  -> number
     )(UserData.apply)(UserData.unapply)
   )
+  val mapTable = Map("a" -> "b", "c" -> "d", "e" -> "f")
 
   def index() = Action { implicit request =>
     Ok(views.html.user(userForm))
@@ -28,12 +29,11 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
 
   def userPost() = Action(parse.form(userForm)) { implicit request =>
     val userData = request.body
-//    Redirect(s"/info/${userData.name}/${userData.age}")
     Redirect(routes.HomeController.info(userData.name, userData.age))
   }
 
   def info(name: String, age: Int) = Action { implicit request =>
-    Ok(views.html.info(name)(age))
+    Ok(views.html.info(name)(age)(mapTable))
   }
 
 }

@@ -1,5 +1,5 @@
 name := """simple-crawler"""
-organization := "com.vagner"
+organization := "com.mscping"
 
 version := "1.0-SNAPSHOT"
 
@@ -9,6 +9,7 @@ scalaVersion := "2.13.3"
 
 libraryDependencies += guice
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test
+libraryDependencies += "net.ruippeixotog" %% "scala-scraper" % "2.2.0"
 
 // Adds additional packages into Twirl
 //TwirlKeys.templateImports += "com.vagner.controllers._"
