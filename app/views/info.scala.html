@@ -1,4 +1,4 @@
-@(name: String)(age: Int)(map: Map[String, String])
+@(urls: String)(map: Map[String, String])
 
 @main("Info") {
     <!DOCTYPE HTML>
@@ -13,6 +13,7 @@
             </style>
         </head>
         <body>
+            <p1>String of urls passed: @urls</p1>
                 <table class="center" border="1">
                 <caption>URL - Title accordance table</caption>
                 <tr>
@@ -22,9 +23,6 @@
                     @for((url, title) <- map) {
                         <tr><td>@url</td><td>@title</td>
                     }
-                <tr><td>34,5</td><td>3,5</td>
-                <tr><td>35,5</td><td>4</td>
-                <tr><td>36</td><td>4,5</td>
             </table>
         </body>
     </html>

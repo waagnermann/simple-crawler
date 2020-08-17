@@ -1,10 +1,12 @@
 package controllers
 
 import javax.inject._
-import models.UserData
+import models.{Parser, UrlData}
 import play.api.data.Form
 import play.api.mvc._
 import play.api.data.Forms._
+
+import scala.concurrent.Future
 
 /**
  * This controller creates an `Action` to handle HTTP requests to the
@@ -15,25 +17,27 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
  with play.api.i18n.I18nSupport
 {
 
-  val userForm = Form(
+  val urlForm = Form(
     mapping(
-      "name" -> text,
-      "age"  -> number
-    )(UserData.apply)(UserData.unapply)
+      "urls" -> text,
+    )(UrlData.apply)(UrlData.unapply)
   )
-  val mapTable = Map("a" -> "b", "c" -> "d", "e" -> "f")
+//  val mapTable = Map("a" -> "b", "c" -> "d", "e" -> "f")
 
   def index() = Action { implicit request =>
-    Ok(views.html.user(userForm))
+    Ok(views.html.user(urlForm))
   }
 
-  def userPost() = Action(parse.form(userForm)) { implicit request =>
+  def userPost() = Action(parse.form(urlForm)) { implicit request =>
     val userData = request.body
-    Redirect(routes.HomeController.info(userData.name, userData.age))
+    Redirect(routes.HomeController.info(userData.urls))
   }
 
-  def info(name: String, age: Int) = Action { implicit request =>
-    Ok(views.html.info(name)(age)(mapTable))
+
+  def info(urls: String) = Action { implicit request =>
+    val parser = Parser(urls)
+    val mapTable = parser.parse
+    Ok(views.html.info(urls)(mapTable))
   }
 
 }
