@@ -11,7 +11,7 @@ OpenJDK 64-Bit Server VM (AdoptOpenJDK)(build 25.222-b10, mixed mode)
 You can obtain Java SE from Oracle’s JDK Site.
 ```
 
-You also need to have sbt installed on your machine. If so, typing the command ```which sbt``` in your terminal should produce something line 
+You also need to have sbt installed on your machine. If so, typing the command ```which sbt``` in your terminal should produce something like 
 ```/usr/bin/sbt```
 
 To start web-server, type \
