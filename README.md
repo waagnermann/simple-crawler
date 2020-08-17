@@ -14,6 +14,6 @@ You can obtain Java SE from Oracle’s JDK Site.
 You also need to have sbt installed on your machine. If so, typing the command ```which sbt``` in your terminal should produce something like 
 ```/usr/bin/sbt```
 
-#Start app
+# Start app
 To start web-server, type \
 ```sbt run```
