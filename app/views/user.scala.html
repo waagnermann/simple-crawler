@@ -1,7 +1,8 @@
 @(userForm: Form[UrlData])(implicit messages: Messages)
 
 @main("Login") {
-<h1> @helper.form(action = routes.HomeController.userPost()) {
+<p>Put here a list of web-urls <strong>without spaces</strong></p>
+    <h1> @helper.form(action = routes.HomeController.userPost()) {
         @helper.inputText(userForm("urls"))
         <input type="submit" value="Submit">
     }
